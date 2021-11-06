@@ -77,11 +77,19 @@ def build_model():
 			term-frequency times inversed document-frequency.
 			The Classifier used here is a AdaBoost implementation.
 	'''
-	model = Pipeline([
-		('vect', CountVectorizer(tokenizer=tokenize, max_df=0.9)),
+	pipeline = Pipeline([
+		('vect', CountVectorizer(tokenizer=tokenize)),
 		('tfidf', TfidfTransformer()),
-		('clf', MultiOutputClassifier(AdaBoostClassifier(learning_rate=0.8))) 
+		('clf', MultiOutputClassifier(AdaBoostClassifier())) 
 	])
+	
+	parameters = {
+		'vect__max_df':  [0.9, 1],
+		'clf__estimator__learning_rate': [0.7, 0.8, 0.9],
+	}
+	model = GridSearchCV(pipeline, param_grid = parameters)
+	print(f"Best Grid Search Parameters: {model.best_params_}")
+	
 	return model
 
 
