@@ -84,7 +84,7 @@ def build_model():
 	])
 	
 	parameters = {
-		'vect__max_df':  [0.8, 0.9],
+		'vect__max_df':  [0.6, 0.7],
 		'clf__estimator__learning_rate': [0.6, 0.7]
 	}
 	model = GridSearchCV(pipeline, param_grid = parameters, verbose=3)
