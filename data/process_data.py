@@ -60,7 +60,7 @@ def save_data(df, database_filename):
 	# new sqllite dbbase named database_filename
 	engine = create_engine('sqlite:///'+database_filename)
 	# write merged and cleaned dataframe df into a new table
-	df.to_sql('message_categories', engine, index=False)  
+	df.to_sql('message_categories', engine, index=False, if_exists='replace')  
 
 def main():	
 	'''
