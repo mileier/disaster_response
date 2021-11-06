@@ -85,7 +85,7 @@ def build_model():
 	
 	parameters = {
 		'vect__max_df':  [0.9, 1],
-		'clf__estimator__learning_rate': [0.7, 0.8, 0.9],
+		'clf__estimator__learning_rate': [0.7, 0.8, 0.9]
 	}
 	model = GridSearchCV(pipeline, param_grid = parameters)
 	print(f"Best Grid Search Parameters: {model.best_params_}")
