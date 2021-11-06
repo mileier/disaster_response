@@ -88,7 +88,6 @@ def build_model():
 		'clf__estimator__learning_rate': [0.7, 0.8, 0.9]
 	}
 	model = GridSearchCV(pipeline, param_grid = parameters)
-	print(f"Best Grid Search Parameters: {model.best_params_}")
 	
 	return model
 
@@ -168,6 +167,7 @@ def main():
         
 		print('Training model...')
 		model.fit(X_train, y_train)
+		print(f"Best Grid Search Parameters: {model.best_params_}")
         
 		print('Evaluating model...')
 		evaluate_model(model, X_test, y_test, category_names)
